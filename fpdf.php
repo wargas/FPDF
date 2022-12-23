@@ -867,6 +867,19 @@ function Ln($h=null)
 
 function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
 {
+	//Accept base64 image
+	if(str_starts_with($file, 'data:image')) {
+
+		$posWrap = strpos($file, ',');
+
+		$head = substr($file, 0, $posWrap);
+		$data = substr($file, $posWrap);
+
+		$type = preg_replace("/^data:image\/(png|jpg|jpeg|gif);base64/", "$1", $head);
+
+		$file = tempnam(sys_get_temp_dir(), 'fpdf');
+		file_put_contents($file, base64_decode($data));            
+	}
 	// Put an image on the page
 	if($file=='')
 		$this->Error('Image file name is empty');
