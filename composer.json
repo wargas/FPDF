@@ -13,9 +13,9 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "fpdf.php"
-        ]
+        "psr-4": {
+            "Wargas\\FPDF\\": "\\src"
+        }
     },
     "require": {
         "ext-zlib": "*",

@@ -19,3 +19,17 @@ or you can include the following in your composer.json file:
     }
 }
 ```
+
+# Get Started
+
+```php
+use Wargas\FPDF\FPDF;
+
+$pdf = new FPDF();
+
+$pdf->AddPage();
+$pdf->SetFont('Arial', '', 10);
+$pdf->Write(10, "Example 01");
+$pdf->Image("data:image/png;base64,iVBORw0KGgoAAAA....");
+$pdf->Output('I');
+```
